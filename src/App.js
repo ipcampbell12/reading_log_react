@@ -1,9 +1,11 @@
-
+//need to include this to use bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Layout/Header';
 
 function App() {
   return (
-    <div className="App">
-
+    <div>
+      <Header />
     </div>
   );
 }
