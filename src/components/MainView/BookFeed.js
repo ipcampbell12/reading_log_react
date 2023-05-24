@@ -44,7 +44,9 @@ function BookFeed(props) {
 
     return (
         <div className={classes.books}>
+
             <Card>
+                <h3>Reading Log Feed</h3>
                 <ul>{booksList}</ul>
             </Card>
         </div>

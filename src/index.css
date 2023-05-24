@@ -23,3 +23,12 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+
+.feed {
+  width: 70%;
+}
+
+.stats {
+  width: 30%;
+}

@@ -1,0 +1,6 @@
+.stats {
+    max-width: 60rem;
+    width: 20%;
+    margin: .5rem auto;
+    animation: meals-appear 1s ease-out forwards;
+}
