@@ -1,4 +1,5 @@
-
+//need to include this to use bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
