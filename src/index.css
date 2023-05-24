@@ -12,3 +12,14 @@ body {
   margin: 0;
   background-color: #3f3f3f;
 }
+
+.overall {
+  background-color: #3f3f3f;
+}
+
+.main {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
