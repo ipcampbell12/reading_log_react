@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LogEntry(props) {
+function Stats(props) {
     return (
         <div>
 
@@ -8,4 +8,4 @@ function LogEntry(props) {
     );
 }
 
-export default LogEntry;
+export default Stats;

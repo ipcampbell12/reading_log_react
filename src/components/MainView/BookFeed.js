@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../UI/Card';
 import classes from './BookFeed.module.css'
+import BookItem from './BookItem';
 
 const DUMMY_BOOKS = [
     {
@@ -32,18 +33,22 @@ const DUMMY_BOOKS = [
 
 function BookFeed(props) {
 
-    // // const booksList = DUMMY_BOOKS.map((book) => {
-    // //     <BookItem
+    const booksList = DUMMY_BOOKS.map((book) => (
+        <BookItem
+            key={book.id}
+            title={book.title}
+            author={book.author}
 
-    // //     />
-    // // })
-    // return (
-    //     <div className={classes.books}>
-    //         <Card>
-    //             <ul>{booksList}</ul>
-    //         </Card>
-    //     </div>
-    // );
+        />
+    ));
+
+    return (
+        <div className={classes.books}>
+            <Card>
+                <ul>{booksList}</ul>
+            </Card>
+        </div>
+    );
 }
 
 export default BookFeed;
