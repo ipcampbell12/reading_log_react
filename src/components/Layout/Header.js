@@ -6,12 +6,13 @@ import classes from './Header.module.css'
 import LogButton from './LogButton';
 
 
+
 function Header(props) {
     return (
         <Fragment>
             <header className={classes.header}>
                 <h1>Book Log</h1>
-                <LogButton />
+                <LogButton onClick={props.onShowEntryModal} />
             </header>
 
             <div className={classes['main-image']}>
