@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Layout/Header';
 import BookFeed from './components/MainView/BookFeed';
 import Stats from './components/MainView/Stats'
+import EntryForm from './components/EntryForm/EntryForm';
 
 
 function App() {
@@ -20,10 +21,10 @@ function App() {
 
   return (
     <div className='overall'>
-
-      <Header />
+      {displayEntryForm && <EntryForm onClose={hideEntryFormHandler} />}
+      <Header onShowEntryModal={showEntryFromHandler} />
       <main className='main'>
-        <BookFeed onShowEntryModal={showEntryFromHandler} />
+        <BookFeed />
         <Stats />
       </main>
     </div>
