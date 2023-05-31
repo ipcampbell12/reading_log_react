@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '../UI/Card';
 import classes from './BookFeed.module.css'
 import BookItem from './BookItem';
+import LogContext from '../../store/log-context';
 
 const DUMMY_BOOKS = [
     {
@@ -42,10 +43,24 @@ const DUMMY_BOOKS = [
     }
 
 ]
+console.log(DUMMY_BOOKS)
 
 function BookFeed(props) {
 
-    const booksList = DUMMY_BOOKS.map((book) => (
+
+    const logCtx = useContext(LogContext)
+
+    console.log(logCtx)
+
+    const bookRemoveHandler = (id) => {
+        logCtx.removeBook(id)
+    }
+    const bookUpdateHandler = (id) => {
+        logCtx.updateBook(id)
+    }
+
+
+    const booksList = logCtx.books.map((book) => (
         <BookItem
             key={book.id}
             title={book.title}
@@ -53,6 +68,8 @@ function BookFeed(props) {
             genre={book.genre}
             fictionNonfiction={book.fictionNonfiction}
             summary={book.summary}
+            onRemove={bookRemoveHandler}
+            onUpdate={bookUpdateHandler}
         />
     ));
 

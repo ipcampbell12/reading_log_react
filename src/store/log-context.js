@@ -5,6 +5,7 @@ const LogContext = React.createContext({
     bookCount: 0,
     addBook: (book) => { },
     removeBook: (id) => { },
+    updateBook: (id) => { },
     clearLog: () => { }
 });
 

@@ -21,6 +21,8 @@ function EntryForm(props) {
     const submitEntry = (e) => {
         e.preventDefault();
 
+        console.log("form submitted")
+
         const enteredTitle = titleRef.current.value;
         const enteredAuthor = authorRef.current.value;
         const enteredGenre = genreRef.current.value;
@@ -43,7 +45,7 @@ function EntryForm(props) {
                     Close
                 </button>
             </div>
-            <form className={classes.form} onSumbit={submitEntry}>
+            <form action="" className={classes.form} onSubmit={submitEntry}>
                 <div className={classes.control}>
                     <label htmlFor='title'>Title</label>
                     <input type="text" id="title" ref={titleRef} />
@@ -73,7 +75,7 @@ function EntryForm(props) {
                         Cancel
                     </buttom>
                     <br />
-                    <button type='button' classname={classes.confirm}> Submit</button>
+                    <input type='submit' value="Add Book" classname={classes.confirm} />
                 </div>
 
 
