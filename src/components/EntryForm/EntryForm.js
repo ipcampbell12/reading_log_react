@@ -1,9 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 
 import Modal from '../UI/Modal';
 import classes from './EntryForm.module.css'
+import LogContext from '../../store/log-context';
 
 function EntryForm(props) {
+
+    const logCtx = useContext(LogContext)
+
+    const addBookHandler = (book) => {
+        logCtx.addBook(book)
+    }
 
     const titleRef = useRef();
     const authorRef = useRef();
@@ -19,6 +26,14 @@ function EntryForm(props) {
         const enteredGenre = genreRef.current.value;
         const enteredFic = ficRef.current.value;
         const enteredSummary = summaryRef.current.value;
+
+        addBookHandler({ enteredTitle, enteredAuthor, enteredGenre, enteredFic, enteredSummary })
+
+        titleRef.current.value = '';
+        authorRef.current.value = '';
+        genreRef.current.value = '';
+        ficRef.current.value = '';
+        summaryRef.current.value = '';
 
     }
     return (
