@@ -4,10 +4,13 @@ import LogContext from "./log-context";
 
 //instatiate default context state (i.e. empty)
 
+const defaultLogState = {
+    books: []
+}
 
 function logReducer(books, action) {
     switch (action.type) {
-        case 'bookAdded': {
+        case 'ADD': {
             return [
                 ...books, {
                     id: action.id,
@@ -15,7 +18,7 @@ function logReducer(books, action) {
                     author: action.author,
                     read: false
                 }];
-        } case 'bookUpdated': {
+        } case 'UPDATE': {
             return books.map(book => {
                 if (book.id === action.book.id) {
                     return action.book;
@@ -23,23 +26,54 @@ function logReducer(books, action) {
                     return book;
                 }
             });
-        } case 'bookRemoved': {
+        } case 'DELETE': {
             return books.filter(book => book.id !== action.id)
+        } case 'CLEAR': {
+            return defaultLogState
         }
         default: {
             throw Error('Unknown action: ' + action.type);
         }
     }
-
-
-
-
-
 }
 
-function logProvider() {
-    logReducer()
+const LogProvider = (props) => {
+    const [logState, dispatchLogAction] = useReducer(
+        logReducer,
+        defaultLogState
+    );
 
-}
+    const addBookToLogHandler = (book) => {
+        dispatchLogAction({ type: 'ADD', book: book });
+    };
 
-export default logProvider;
+
+    const removeBookFromLogHandler = (id) => {
+        dispatchLogAction({ type: 'REMOVE', id: id });
+    };
+
+    const updateBookInLogHandler = (id) => {
+        dispatchLogAction({ type: 'REMOVE', id: id });
+    };
+
+
+    const clearLogHandler = () => {
+        dispatchLogAction({ type: 'CLEAR' });
+    };
+
+    const logContext = {
+        books: logState.books,
+        addBook: addBookToLogHandler,
+        removeBook: removeBookFromLogHandler,
+        updateBook: updateBookInLogHandler,
+        clearLog: clearLogHandler
+    };
+
+    return (
+        <LogContext.Provider value={logContext}>
+            {props.children}
+        </LogContext.Provider>
+    );
+};
+
+export default LogProvider;

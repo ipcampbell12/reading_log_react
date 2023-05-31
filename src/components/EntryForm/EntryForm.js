@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import Modal from '../UI/Modal';
 import classes from './EntryForm.module.css'
 
 function EntryForm(props) {
 
-    const submitEntry = () => {
+    const titleRef = useRef();
+    const authorRef = useRef();
+    const genreRef = useRef();
+    const ficRef = useRef();
+    const summaryRef = useRef();
+
+    const submitEntry = (e) => {
+        e.preventDefault();
+
+        const enteredTitle = titleRef.current.value;
+        const enteredAuthor = authorRef.current.value;
+        const enteredGenre = genreRef.current.value;
+        const enteredFic = ficRef.current.value;
+        const enteredSummary = summaryRef.current.value;
 
     }
     return (
@@ -18,26 +31,26 @@ function EntryForm(props) {
             <form className={classes.form} onSumbit={submitEntry}>
                 <div className={classes.control}>
                     <label htmlFor='title'>Title</label>
-                    <input type="text" id="title" />
+                    <input type="text" id="title" ref={titleRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='author'>Author</label>
-                    <input type="text" id="author" />
+                    <input type="text" id="author" ref={authorRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='genre'> Genre</label>
-                    <input type="text" id="genre" />
+                    <input type="text" id="genre" ref={genreRef} />
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='fiction-nonfiction'>Fiction/Non Fiction</label>
-                    <select name="Fiction/Nonfiction" id="fiction-nonfiction">
+                    <select name="Fiction/Nonfiction" id="fiction-nonfiction" ref={ficRef} >
                         <option value="fiction">Fiction</option>
                         <option value="nonfiction">Non Fiction</option>
                     </select>
                 </div>
                 <div className={classes.control}>
                     <label htmlFor='summary'>Summary</label>
-                    <textarea name="Summary" id="summary" row="4" col="50">
+                    <textarea name="Summary" id="summary" row="4" col="50" ref={summaryRef} >
                     </textarea>
                 </div>
                 <div className={classes.action}>
