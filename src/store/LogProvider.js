@@ -16,7 +16,9 @@ function logReducer(books, action) {
                     id: action.id,
                     title: action.title,
                     author: action.author,
-                    read: false
+                    genre: action.genre,
+                    fic: action.fic,
+                    summary: action.summary
                 }];
         } case 'UPDATE': {
             return books.map(book => {
@@ -44,6 +46,7 @@ const LogProvider = (props) => {
     );
 
     const addBookToLogHandler = (book) => {
+        console.log("addBookToLogHandler was run")
         dispatchLogAction({ type: 'ADD', book: book });
     };
 

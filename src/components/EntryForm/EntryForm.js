@@ -23,13 +23,16 @@ function EntryForm(props) {
 
         console.log("form submitted")
 
+        const id = logCtx.books.length + 1
         const enteredTitle = titleRef.current.value;
         const enteredAuthor = authorRef.current.value;
         const enteredGenre = genreRef.current.value;
         const enteredFic = ficRef.current.value;
         const enteredSummary = summaryRef.current.value;
 
-        addBookHandler({ enteredTitle, enteredAuthor, enteredGenre, enteredFic, enteredSummary })
+        addBookHandler({ id, enteredTitle, enteredAuthor, enteredGenre, enteredFic, enteredSummary })
+
+        console.log({ id, enteredTitle, enteredAuthor, enteredGenre, enteredFic, enteredSummary })
 
         titleRef.current.value = '';
         authorRef.current.value = '';

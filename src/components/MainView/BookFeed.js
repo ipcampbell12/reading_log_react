@@ -50,8 +50,6 @@ function BookFeed(props) {
 
     const logCtx = useContext(LogContext)
 
-    console.log(logCtx)
-
     const bookRemoveHandler = (id) => {
         logCtx.removeBook(id)
     }
