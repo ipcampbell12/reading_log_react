@@ -43,7 +43,7 @@ const DUMMY_BOOKS = [
     }
 
 ]
-console.log(DUMMY_BOOKS)
+//console.log(DUMMY_BOOKS)
 
 function BookFeed(props) {
 
@@ -57,7 +57,7 @@ function BookFeed(props) {
         logCtx.updateBook(id)
     }
 
-
+    console.log(logCtx.books)
     const booksList = logCtx.books.map((book) => (
         <BookItem
             key={book.id}

@@ -11,15 +11,8 @@ const defaultLogState = {
 function logReducer(books, action) {
     switch (action.type) {
         case 'ADD': {
-            return [
-                ...books, {
-                    id: action.id,
-                    title: action.title,
-                    author: action.author,
-                    genre: action.genre,
-                    fic: action.fic,
-                    summary: action.summary
-                }];
+            console.log(books.books)
+            return [...books.books, action.book];
         } case 'UPDATE': {
             return books.map(book => {
                 if (book.id === action.book.id) {
@@ -40,6 +33,8 @@ function logReducer(books, action) {
 }
 
 const LogProvider = (props) => {
+
+    //useReducer takes the reducer function, and the initial state
     const [logState, dispatchLogAction] = useReducer(
         logReducer,
         defaultLogState

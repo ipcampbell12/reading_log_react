@@ -10,6 +10,7 @@ function EntryForm(props) {
 
     const addBookHandler = (book) => {
         logCtx.addBook(book)
+        console.log("add book function run")
     }
 
     const titleRef = useRef();
